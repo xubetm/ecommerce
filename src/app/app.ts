@@ -1,13 +1,28 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Navbar } from './navbar/navbar';
 import { ArticleList } from './article-list/article-list';
+import { ArticleNewTemplate } from './article-new-template/article-new-template';
+import { ArticleNewReactive } from './article-new-reactive/article-new-reactive';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ArticleList],
+  imports: [CommonModule, Navbar, ArticleList, ArticleNewTemplate, ArticleNewReactive],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('ecommerce');
+  view: 'list' | 'template' | 'reactive' = 'list';
+
+  showList() {
+    this.view = 'list';
+  }
+
+  showTemplate() {
+    this.view = 'template';
+  }
+
+  showReactive() {
+    this.view = 'reactive';
+  }
 }
