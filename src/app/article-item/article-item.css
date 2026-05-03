@@ -1,0 +1,58 @@
+.card {
+  width: 250px;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: white;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 120px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* Estil si està en venda */
+.sale {
+  background-color: #e6f7e6;
+  border: 2px solid #2ecc71;
+}
+
+/* Botons */
+button {
+  padding: 5px 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #3498db;
+  color: white;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

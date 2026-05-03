@@ -1,0 +1,13 @@
+<div class="card" [class.sale]="article.isOnSale">
+  <h2>{{ article.name }}</h2>
+
+  <img [src]="article.imageUrl" width="150" />
+
+  <p>Precio: {{ article.price }} €</p>
+
+  <p>Cantidad: {{ article.quantityInCart }}</p>
+
+  <button (click)="decrease()" [disabled]="article.quantityInCart === 0">-</button>
+
+  <button (click)="increase()">+</button>
+</div>
