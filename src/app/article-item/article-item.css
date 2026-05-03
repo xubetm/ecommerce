@@ -36,6 +36,11 @@
   border: 2px solid #2ecc71;
 }
 
+/* Estil si no està en venda */
+.not-sale-price {
+  color: gray;
+}
+
 /* Botons */
 button {
   padding: 5px 10px;
