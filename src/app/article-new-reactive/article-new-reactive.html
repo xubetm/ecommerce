@@ -1,2 +1,42 @@
-<h2>Nou article (Reactiu)</h2>
-<p>Aquí anirà el formulari reactive</p>
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+  <input formControlName="name" placeholder="Nom article" />
+
+  <div *ngIf="articleForm.get('name')?.invalid && (articleForm.get('name')?.touched || submitted)">
+    <small *ngIf="articleForm.get('name')?.errors?.['required']"> El nom és obligatori </small>
+
+    <small *ngIf="articleForm.get('name')?.errors?.['forbiddenName']">
+      Nom no permès (Prova, Test, Mock, Fake)
+    </small>
+  </div>
+
+  <input formControlName="price" placeholder="Preu" type="number" />
+
+  <div
+    *ngIf="articleForm.get('price')?.invalid && (articleForm.get('price')?.touched || submitted)"
+  >
+    <small *ngIf="articleForm.get('price')?.errors?.['required']"> El preu és obligatori </small>
+
+    <small *ngIf="articleForm.get('price')?.errors?.['min']"> El preu mínim és 0.1€ </small>
+  </div>
+
+  <input formControlName="imageUrl" placeholder="URL de la imatge" />
+
+  <div
+    *ngIf="
+      articleForm.get('imageUrl')?.invalid && (articleForm.get('imageUrl')?.touched || submitted)
+    "
+  >
+    <small *ngIf="articleForm.get('imageUrl')?.errors?.['required']"> La URL és obligatòria </small>
+
+    <small *ngIf="articleForm.get('imageUrl')?.errors?.['pattern']"> La URL no és vàlida </small>
+  </div>
+
+  <label>
+    <input type="checkbox" formControlName="isOnSale" />
+    En venda
+  </label>
+
+  <button type="submit" [disabled]="articleForm.invalid">Crear article</button>
+</form>
+
+<div *ngIf="submitted && articleForm.valid">✔ Article creat correctament</div>

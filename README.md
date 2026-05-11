@@ -1,59 +1,15 @@
-# Ecommerce
+Login UOC: xubetm
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.9.
+Nom: MIQUEL XUBET ALBERT
 
-## Development server
+S’ha creat una aplicació d’ecommerce amb Angular on es mostren articles mitjançant components com article-item i article-list. També s’ha implementat la gestió de quantitats amb comunicació entre components (@Input i @Output).
 
-To start a local development server, run:
+S’ha afegit un servei (ArticleService) per gestionar els articles de forma centralitzada, aplicant BehaviorSubject de RxJS per actualitzar la llista en temps real.
 
-```bash
-ng serve
-```
+S’han implementat dos tipus de formularis: template-driven i reactius. En el formulari reactiu s’han utilitzat validacions d’Angular, FormBuilder i una validació personalitzada.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+També s’ha creat un sistema de navegació amb navbar per mostrar o amagar components amb \*ngIf.
 
-## Code scaffolding
+Les principals dificultats han estat la configuració de components standalone, la comunicació entre components i l’ús de formularis reactius amb validacions.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Els articles es guarden en memòria dins d’un servei, no en una base de dades, per tant es perden en recarregar la pàgina.

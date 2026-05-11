@@ -1,2 +1,34 @@
-<h2>Nou article (Template)</h2>
-<p>Aquí anirà el formulari template-driven</p>
+<form [formGroup]="article" (ngSubmit)="onSubmit()">
+  <label for="name">Nom article</label>
+  <input id="name" type="text" formControlName="name" />
+
+  <div *ngIf="article.get('name')?.invalid && article.get('name')?.touched">
+    El nom és obligatori
+  </div>
+
+  <label for="price">Preu</label>
+  <input id="price" type="text" formControlName="price" />
+
+  <div *ngIf="article.get('price')?.touched">
+    <div *ngIf="article.get('price')?.errors?.['required']">El preu és obligatori</div>
+
+    <div *ngIf="article.get('price')?.errors?.['pattern']">El preu ha de ser numèric</div>
+  </div>
+
+  <label for="imageUrl">URL imatge</label>
+  <input id="imageUrl" type="text" formControlName="imageUrl" />
+
+  <div *ngIf="article.get('imageUrl')?.touched">
+    <div *ngIf="article.get('imageUrl')?.errors?.['required']">La URL és obligatòria</div>
+
+    <div *ngIf="article.get('imageUrl')?.errors?.['pattern']">URL incorrecta</div>
+  </div>
+
+  <label>
+    <input type="checkbox" formControlName="isOnSale" />
+    En venda
+  </label>
+
+  <button type="submit" [disabled]="article.invalid">Crear article</button>
+  <div *ngIf="submitted">✔ Article creat correctament</div>
+</form>
