@@ -1,0 +1,15 @@
+<div *ngIf="article" class="detail-container">
+  <div class="detail-image">
+    <img [src]="article.imageUrl | defaultImage" alt="Artículo" />
+  </div>
+
+  <div class="detail-info">
+    <h2>{{ article.name }}</h2>
+
+    <p class="price">{{ article.price }} €</p>
+
+    <p class="quantity">Cantidad en carrito: {{ article.quantityInCart }}</p>
+
+    <p *ngIf="article.isOnSale" class="sale">🔥 En oferta</p>
+  </div>
+</div>

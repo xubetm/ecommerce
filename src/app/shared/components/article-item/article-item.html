@@ -1,7 +1,10 @@
 <div class="card" [ngClass]="{ sale: article.isOnSale }">
   <h2>{{ article.name }}</h2>
 
-  <img [src]="article.imageUrl" width="150" alt="imagen libro anunciado" />
+  <a [routerLink]="['/article', article.id]">
+    <!-- <img [src]="article.imageUrl" width="150" alt="imagen artículo" /> -->
+    <img [src]="article.imageUrl | defaultImage" alt="imagen-articulo" />
+  </a>
 
   <p [ngClass]="{ 'not-sale-price': !article.isOnSale }">Precio: {{ article.price }} €</p>
 
@@ -9,7 +12,6 @@
     <p>Cantidad: {{ article.quantityInCart }}</p>
 
     <button (click)="decrease()" [disabled]="article.quantityInCart === 0">-</button>
-
     <button (click)="increase()">+</button>
   </div>
 </div>

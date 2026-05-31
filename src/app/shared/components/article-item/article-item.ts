@@ -1,11 +1,13 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Article } from '../models/article';
-import { ArticleQuantityChange } from '../models/article-quantity-change';
+import { Article } from '../../../core/models/article';
+import { ArticleQuantityChange } from '../../../core/models/article-quantity-change';
+import { DefaultImagePipe } from '../../pipes/default-image.pipe';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-article-item',
-  imports: [CommonModule],
+  imports: [CommonModule, DefaultImagePipe, RouterModule],
   templateUrl: './article-item.html',
   styleUrl: './article-item.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -2,20 +2,22 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../shared/services/user';
+import { UserStoreService } from '../../shared/services/user-store';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-login',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './register.html',
-  styleUrl: './register.css',
+  templateUrl: './login.html',
+  styleUrl: './login.css',
 })
-export class Register {
+export class Login {
   form;
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private userStore: UserStoreService,
   ) {
     this.form = this.fb.group({
       username: ['', Validators.required],
@@ -23,17 +25,18 @@ export class Register {
     });
   }
 
-  register() {
+  login() {
     if (this.form.invalid) return;
 
     const { username, password } = this.form.value;
 
-    this.userService.register(username!, password!).subscribe({
+    this.userService.login(username!, password!).subscribe({
       next: (res: any) => {
-        console.log('REGISTER OK', res);
+        console.log('LOGIN OK', res);
+        this.userStore.setToken(res.token);
       },
-      error: (err: any) => {
-        console.error('REGISTER ERROR', err);
+      error: (err) => {
+        console.error('LOGIN ERROR', err);
       },
     });
   }

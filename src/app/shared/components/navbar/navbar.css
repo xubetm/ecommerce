@@ -1,0 +1,58 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 24px;
+  background: rgba(17, 24, 39, 0.9);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* LINKS */
+.navbar a {
+  position: relative;
+  color: #e5e7eb;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+.navbar a:hover {
+  background: rgba(37, 99, 235, 0.15);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* underline animat */
+.navbar a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0%;
+  height: 2px;
+  background: #3b82f6;
+  transition: 0.25s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.navbar a:hover::after {
+  width: 60%;
+}
+
+.navbar a.active {
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.navbar a.active::after {
+  width: 0;
+}

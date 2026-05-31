@@ -1,8 +1,5 @@
-<h1>Hola món, desde Angular!</h1>
-<app-navbar (changeView)="view = $event"></app-navbar>
+<h1>Hola món, des de Angular!</h1>
 
-<app-article-list *ngIf="view === 'list'"></app-article-list>
+<app-navbar></app-navbar>
 
-<app-article-new-template *ngIf="view === 'template'"></app-article-new-template>
-
-<app-article-new-reactive *ngIf="view === 'reactive'"></app-article-new-reactive>
+<router-outlet></router-outlet>

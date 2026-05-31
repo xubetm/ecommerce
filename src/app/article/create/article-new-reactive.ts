@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { NameArticleValidator } from './validators/name-article.validator';
-import { ArticleService } from '../services/article';
+import { ArticleService } from '../../shared/services/article.service';
 
 @Component({
   selector: 'app-article-new-reactive',
@@ -13,7 +12,6 @@ import { ArticleService } from '../services/article';
 })
 export class ArticleNewReactiveComponent {
   submitted = false;
-
   articleForm: FormGroup;
 
   constructor(
@@ -21,20 +19,11 @@ export class ArticleNewReactiveComponent {
     private articleService: ArticleService,
   ) {
     this.articleForm = this.fb.group({
-      name: [
-        '',
-        [
-          Validators.required,
-          NameArticleValidator.forbiddenNames(['Prova', 'Test', 'Mock', 'Fake']),
-        ],
-      ],
+      name: ['', Validators.required],
 
       price: ['', [Validators.required, Validators.min(0.1)]],
 
-      imageUrl: [
-        '',
-        [Validators.required, Validators.pattern('https?:\\/\\/[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,3}.*')],
-      ],
+      imageUrl: ['', [Validators.required]],
 
       isOnSale: [false],
     });
@@ -44,12 +33,11 @@ export class ArticleNewReactiveComponent {
     this.submitted = true;
 
     if (this.articleForm.valid) {
-      this.articleService.addArticle(this.articleForm.value);
-      console.log('ARTICLE GUARDAT:', this.articleForm.value);
-
-      console.log('ARTICLE:', this.articleForm.value);
-      this.articleForm.reset();
-      this.submitted = false;
+      this.articleService.create(this.articleForm.value).subscribe(() => {
+        console.log('ARTICLE CREATED');
+        this.articleForm.reset();
+        this.submitted = false;
+      });
     }
   }
 }

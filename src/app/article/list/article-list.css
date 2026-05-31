@@ -1,0 +1,37 @@
+/* Título */
+h1 {
+  text-align: center;
+  margin: 30px 0;
+  color: #1f2937;
+}
+
+/* Buscador */
+input[type='text'] {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  padding: 14px 18px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input[type='text']:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* Grid de productos */
+.list-container {
+  gap: 30px;
+  align-items: stretch;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}

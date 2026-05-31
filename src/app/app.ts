@@ -1,28 +1,20 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Navbar } from './navbar/navbar';
-import { ArticleList } from './article-list/article-list';
-import { ArticleNewTemplate } from './article-new-template/article-new-template';
-import { ArticleNewReactiveComponent } from './article-new-reactive/article-new-reactive';
+import { Navbar } from './shared/components/navbar/navbar';
+import { RouterOutlet } from '@angular/router';
+import { UserStoreService } from './shared/services/user-store';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, Navbar, ArticleList, ArticleNewTemplate, ArticleNewReactiveComponent],
+  standalone: true,
+  imports: [CommonModule, Navbar, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
-  view: 'list' | 'template' | 'reactive' = 'list';
+export class App implements OnInit {
+  constructor(private userStore: UserStoreService) {}
 
-  showList() {
-    this.view = 'list';
-  }
-
-  showTemplate() {
-    this.view = 'template';
-  }
-
-  showReactive() {
-    this.view = 'reactive';
+  ngOnInit() {
+    console.log('TOKEN:', this.userStore.getToken());
   }
 }
