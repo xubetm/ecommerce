@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, DefaultImagePipe, RouterModule],
   templateUrl: './article-item.html',
   styleUrl: './article-item.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleItemComponent {
   @Input() article!: Article;
@@ -19,7 +19,7 @@ export class ArticleItemComponent {
   increase() {
     this.quantityChange.emit({
       articleId: this.article.id,
-      quantity: this.article.quantityInCart + 1,
+      quantity: 1,
     });
   }
 
@@ -27,7 +27,7 @@ export class ArticleItemComponent {
     if (this.article.quantityInCart > 0) {
       this.quantityChange.emit({
         articleId: this.article.id,
-        quantity: this.article.quantityInCart - 1,
+        quantity: -1,
       });
     }
   }

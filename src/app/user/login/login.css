@@ -1,6 +1,7 @@
 /* Centrar todo en pantalla */
 :host {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;

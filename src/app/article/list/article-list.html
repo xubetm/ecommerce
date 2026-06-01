@@ -1,6 +1,10 @@
 <input type="text" placeholder="Buscar artículos..." (input)="search($event)" />
 
 <div class="list-container">
-  <app-article-item *ngFor="let article of articles$ | async" [article]="article">
+  <app-article-item
+    *ngFor="let article of articles$ | async"
+    [article]="article"
+    (quantityChange)="changeQuantity($event)"
+  >
   </app-article-item>
 </div>
