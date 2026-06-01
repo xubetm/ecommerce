@@ -2,14 +2,25 @@ Login UOC: xubetm
 
 Nom: MIQUEL XUBET ALBERT
 
-S’ha creat una aplicació d’ecommerce amb Angular on es mostren articles mitjançant components com article-item i article-list. També s’ha implementat la gestió de quantitats amb comunicació entre components (@Input i @Output).
+En aquesta PAC s’ha desenvolupat una aplicació web d’e-commerce amb Angular (standalone components) i una API REST amb Express.
 
-S’ha afegit un servei (ArticleService) per gestionar els articles de forma centralitzada, aplicant BehaviorSubject de RxJS per actualitzar la llista en temps real.
+L’aplicació permet:
 
-S’han implementat dos tipus de formularis: template-driven i reactius. En el formulari reactiu s’han utilitzat validacions d’Angular, FormBuilder i una validació personalitzada.
+    Llistar i cercar articles
+    Veure el detall d’un article
+    Gestionar la quantitat d’articles al cistell
+    Registrar i autenticar usuaris
+    Mostrar notificacions de feedback (login/registre/errors)
 
-També s’ha creat un sistema de navegació amb navbar per mostrar o amagar components amb \*ngIf.
+S’ha treballat amb serveis separats, comunicació entre components i estructura modular.
 
-Les principals dificultats han estat la configuració de components standalone, la comunicació entre components i l’ús de formularis reactius amb validacions.
+Dificultats principals
+La principal dificultat ha estat la reestructuració del projecte Angular, especialment l’organització de carpetes i imports en un entorn standalone. També m'ha resultat complicada la comunicació entre components (Input/Output).
 
-Els articles es guarden en memòria dins d’un servei, no en una base de dades, per tant es perden en recarregar la pàgina.
+Execució del projecte
+Executar el backend a http://localhost:3000
+Instal·lar dependències amb npm install
+Iniciar Angular amb ng serve
+L’autenticació funciona amb token
+
+Els coneixements en React m'han ajudat a entendre els components i el flux de dades, tot i que Angular requereix una estructura més estricta i dependències explícites.

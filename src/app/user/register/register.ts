@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { UserService } from '../../shared/services/user';
+import { NotificationService } from '../../shared/services/notification.service';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +19,8 @@ export class Register {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private notificationService: NotificationService,
+    private router: Router,
   ) {
     this.form = this.fb.group({
       username: ['', Validators.required],
@@ -31,9 +36,15 @@ export class Register {
     this.userService.register(username!, password!).subscribe({
       next: (res: any) => {
         console.log('REGISTER OK', res);
+
+        this.notificationService.show('Registro completado ✔');
+
+        this.router.navigate(['/login']);
       },
       error: (err: any) => {
         console.error('REGISTER ERROR', err);
+
+        this.notificationService.show('Error en el registro ❌');
       },
     });
   }

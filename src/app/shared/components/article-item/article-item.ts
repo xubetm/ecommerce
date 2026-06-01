@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, DefaultImagePipe, RouterModule],
   templateUrl: './article-item.html',
   styleUrl: './article-item.css',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleItemComponent {
   @Input() article!: Article;

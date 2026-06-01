@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Navbar } from './shared/components/navbar/navbar';
 import { RouterOutlet } from '@angular/router';
 import { UserStoreService } from './shared/services/user-store';
+import { NotificationComponent } from './shared/components/notification/notification';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, Navbar, RouterOutlet],
+  imports: [CommonModule, Navbar, RouterOutlet, NotificationComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

@@ -6,6 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DefaultImagePipe implements PipeTransform {
   transform(imageUrl: string | null | undefined): string {
-    return imageUrl || 'assets/images/default.jpg';
+    return imageUrl || 'assets/images/defecto.webp';
   }
 }
